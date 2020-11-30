@@ -17,9 +17,10 @@ public class FizzBuzzGeneral {
         String secondWord = properties.getProperty("secondWord");
         int secondWordFrequency = Integer.parseInt(properties.getProperty("secondWordFrequency"));
 
+        int printFrom = Integer.parseInt(properties.getProperty("printFrom"));
         int printUntil = Integer.parseInt(properties.getProperty("printUntil"));
 
-        for (int i = 1; i <= printUntil; i++) {
+        for (int i = printFrom; i <= printUntil; i++) {
             if (i % (firstWordFrequency * secondWordFrequency) == 0) {
                 System.out.println(firstWord + secondWord);
             } else if (i % secondWordFrequency == 0) {
