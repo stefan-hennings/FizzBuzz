@@ -59,6 +59,7 @@ public class FizzBuzzGeneral {
         }
     }
 
+    //Mainly just curious if I could do it with only ternary
     private void fizzWithTernary() {
         for (int i = printFrom; i <= printUntil; i++) {
             System.out.println(
@@ -72,6 +73,17 @@ public class FizzBuzzGeneral {
             );
         }
     }
+
+//    private void fizzWithTernary() {
+//        for (int i = printFrom; i <= printUntil; i++) {
+//            System.out.println(
+//                    i % bothWordsFrequency == 0 ? bothWords :
+//                    i % secondWordFrequency == 0 ? secondWord :
+//                    i % firstWordFrequency == 0 ? firstWord :
+//                    i
+//            );
+//        }
+//    }
 
     //Work in progress - this is what I'd like my final product to look like if I can find a better way to check the condition.
     private void fizzWithSwitch() {
