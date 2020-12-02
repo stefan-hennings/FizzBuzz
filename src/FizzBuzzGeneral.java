@@ -5,20 +5,28 @@ import java.util.Properties;
 public class FizzBuzzGeneral {
     String firstWord;
     int firstWordFrequency;
+
     String secondWord;
     int secondWordFrequency;
+
     int printFrom;
     int printUntil;
 
     public FizzBuzzGeneral() {
+        setProperties();
+
+        fizzWithIf();
+
+        fizzWithSwitch();
+    }
+
+    private void setProperties() {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream("src/settings.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
         firstWord = properties.getProperty("firstWord");
         firstWordFrequency = Integer.parseInt(properties.getProperty("firstWordFrequency"));
 
@@ -27,18 +35,24 @@ public class FizzBuzzGeneral {
 
         printFrom = Integer.parseInt(properties.getProperty("printFrom"));
         printUntil = Integer.parseInt(properties.getProperty("printUntil"));
+    }
 
-//        for (int i = printFrom; i <= printUntil; i++) {
-//            if (i % (firstWordFrequency * secondWordFrequency) == 0) {
-//                System.out.println(firstWord + secondWord);
-//            } else if (i % secondWordFrequency == 0) {
-//                System.out.println(secondWord);
-//            } else if (i % firstWordFrequency == 0) {
-//                System.out.println(firstWord);
-//            } else {
-//                System.out.println(i);
-//            }
-//        }
+    private void fizzWithIf() {
+        for (int i = printFrom; i <= printUntil; i++) {
+            if (i % (firstWordFrequency * secondWordFrequency) == 0) {
+                System.out.println(firstWord + secondWord);
+            } else if (i % secondWordFrequency == 0) {
+                System.out.println(secondWord);
+            } else if (i % firstWordFrequency == 0) {
+                System.out.println(firstWord);
+            } else {
+                System.out.println(i);
+            }
+        }
+    }
+
+    //Work in progress - this is what I'd like my final product to look like if I can find a better way to check the condition
+    private void fizzWithSwitch() {
         for (int i = printFrom; i <= printUntil; i++) {
             System.out.println(
                     switch (modulusToZero(i)) {
