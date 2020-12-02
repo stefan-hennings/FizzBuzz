@@ -18,9 +18,9 @@ public class FizzBuzzGeneral {
     public FizzBuzzGeneral() {
         setProperties();
 
-//        fizzWithIf();
+        fizzWithIf();
 
-//        fizzWithTernary();
+        fizzWithTernary();
 
         fizzWithSwitch();
     }
