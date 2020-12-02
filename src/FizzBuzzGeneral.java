@@ -9,15 +9,18 @@ public class FizzBuzzGeneral {
     String secondWord;
     int secondWordFrequency;
 
+    String bothWords;
+    int bothWordsFrequency;
+
     int printFrom;
     int printUntil;
 
     public FizzBuzzGeneral() {
         setProperties();
 
-        fizzWithIf();
+//        fizzWithIf();
 
-        fizzWithTernary();
+//        fizzWithTernary();
 
         fizzWithSwitch();
     }
@@ -35,14 +38,17 @@ public class FizzBuzzGeneral {
         secondWord = properties.getProperty("secondWord");
         secondWordFrequency = Integer.parseInt(properties.getProperty("secondWordFrequency"));
 
+        bothWords = firstWord + secondWord;
+        bothWordsFrequency = firstWordFrequency * secondWordFrequency;
+
         printFrom = Integer.parseInt(properties.getProperty("printFrom"));
         printUntil = Integer.parseInt(properties.getProperty("printUntil"));
     }
 
     private void fizzWithIf() {
         for (int i = printFrom; i <= printUntil; i++) {
-            if (i % (firstWordFrequency * secondWordFrequency) == 0) {
-                System.out.println(firstWord + secondWord);
+            if (i % bothWordsFrequency == 0) {
+                System.out.println(bothWords);
             } else if (i % secondWordFrequency == 0) {
                 System.out.println(secondWord);
             } else if (i % firstWordFrequency == 0) {
@@ -56,8 +62,8 @@ public class FizzBuzzGeneral {
     private void fizzWithTernary() {
         for (int i = printFrom; i <= printUntil; i++) {
             System.out.println(
-                    i % (firstWordFrequency * secondWordFrequency) == 0
-                        ? firstWord + secondWord
+                    i % bothWordsFrequency == 0
+                        ? bothWords
                         : i % secondWordFrequency == 0
                         ? secondWord
                         : i % firstWordFrequency == 0
@@ -67,12 +73,13 @@ public class FizzBuzzGeneral {
         }
     }
 
-    //Work in progress - this is what I'd like my final product to look like if I can find a better way to check the condition
+    //Work in progress - this is what I'd like my final product to look like if I can find a better way to check the condition.
+    //I am aware that this method doesn't work properly if the frequencies are changed yet
     private void fizzWithSwitch() {
         for (int i = printFrom; i <= printUntil; i++) {
             System.out.println(
                     switch (modulusToZero(i)) {
-                        case (15) -> firstWord + secondWord;
+                        case (15) -> bothWords;
                         case (5) -> secondWord;
                         case (3) -> firstWord;
                         default -> i;
@@ -82,8 +89,8 @@ public class FizzBuzzGeneral {
     }
 
     private int modulusToZero(int i) {
-        if (i % (firstWordFrequency * secondWordFrequency) == 0) {
-            return firstWordFrequency * secondWordFrequency;
+        if (i % bothWordsFrequency == 0) {
+            return bothWordsFrequency;
         } else if (i % secondWordFrequency == 0) {
             return secondWordFrequency;
         } else if (i % firstWordFrequency == 0) {
