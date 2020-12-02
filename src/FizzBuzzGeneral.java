@@ -17,6 +17,8 @@ public class FizzBuzzGeneral {
 
         fizzWithIf();
 
+        fizzWithTernary();
+
         fizzWithSwitch();
     }
 
@@ -48,6 +50,20 @@ public class FizzBuzzGeneral {
             } else {
                 System.out.println(i);
             }
+        }
+    }
+
+    private void fizzWithTernary() {
+        for (int i = printFrom; i <= printUntil; i++) {
+            System.out.println(
+                    i % (firstWordFrequency * secondWordFrequency) == 0
+                        ? firstWord + secondWord
+                        : i % secondWordFrequency == 0
+                        ? secondWord
+                        : i % firstWordFrequency == 0
+                        ? firstWord
+                        : i
+            );
         }
     }
 
