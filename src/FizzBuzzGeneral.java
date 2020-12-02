@@ -74,29 +74,28 @@ public class FizzBuzzGeneral {
     }
 
     //Work in progress - this is what I'd like my final product to look like if I can find a better way to check the condition.
-    //I am aware that this method doesn't work properly if the frequencies are changed yet
     private void fizzWithSwitch() {
         for (int i = printFrom; i <= printUntil; i++) {
             System.out.println(
                     switch (modulusToZero(i)) {
-                        case (15) -> bothWords;
-                        case (5) -> secondWord;
-                        case (3) -> firstWord;
+                        case "both" -> bothWords;
+                        case "second" -> secondWord;
+                        case "first" -> firstWord;
                         default -> i;
                     }
             );
         }
     }
 
-    private int modulusToZero(int i) {
+    private String modulusToZero(int i) {
         if (i % bothWordsFrequency == 0) {
-            return bothWordsFrequency;
+            return "both";
         } else if (i % secondWordFrequency == 0) {
-            return secondWordFrequency;
+            return "second";
         } else if (i % firstWordFrequency == 0) {
-            return firstWordFrequency;
+            return "first";
         } else {
-            return i;
+            return "number";
         }
     }
 
